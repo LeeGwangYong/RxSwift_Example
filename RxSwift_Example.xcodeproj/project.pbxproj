@@ -14,6 +14,11 @@
 		FC16529D22062EE800097AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC16529B22062EE800097AB9 /* LaunchScreen.storyboard */; };
 		FC1652A822062EE800097AB9 /* RxSwift_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1652A722062EE800097AB9 /* RxSwift_ExampleTests.swift */; };
 		FC1652B322062EE800097AB9 /* RxSwift_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1652B222062EE800097AB9 /* RxSwift_ExampleUITests.swift */; };
+		FC1652C22206304B00097AB9 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FC1652C12206304B00097AB9 /* .swiftlint.yml */; };
+		FC1652C82206306900097AB9 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C42206306800097AB9 /* RxAtomic.framework */; };
+		FC1652C92206306900097AB9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C52206306800097AB9 /* RxSwift.framework */; };
+		FC1652CA2206306900097AB9 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C62206306800097AB9 /* RxBlocking.framework */; };
+		FC1652CB2206306900097AB9 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C72206306800097AB9 /* RxCocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		FC1652AE22062EE800097AB9 /* RxSwift_ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1652B222062EE800097AB9 /* RxSwift_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_ExampleUITests.swift; sourceTree = "<group>"; };
 		FC1652B422062EE800097AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC1652C12206304B00097AB9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FC1652C42206306800097AB9 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
+		FC1652C52206306800097AB9 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		FC1652C62206306800097AB9 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		FC1652C72206306800097AB9 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC1652C82206306900097AB9 /* RxAtomic.framework in Frameworks */,
+				FC1652C92206306900097AB9 /* RxSwift.framework in Frameworks */,
+				FC1652CA2206306900097AB9 /* RxBlocking.framework in Frameworks */,
+				FC1652CB2206306900097AB9 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +91,12 @@
 		FC16528622062EE700097AB9 = {
 			isa = PBXGroup;
 			children = (
+				FC1652C12206304B00097AB9 /* .swiftlint.yml */,
 				FC16529122062EE700097AB9 /* RxSwift_Example */,
 				FC1652A622062EE800097AB9 /* RxSwift_ExampleTests */,
 				FC1652B122062EE800097AB9 /* RxSwift_ExampleUITests */,
 				FC16529022062EE700097AB9 /* Products */,
+				FC1652C32206306800097AB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +141,17 @@
 			path = RxSwift_ExampleUITests;
 			sourceTree = "<group>";
 		};
+		FC1652C32206306800097AB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC1652C42206306800097AB9 /* RxAtomic.framework */,
+				FC1652C62206306800097AB9 /* RxBlocking.framework */,
+				FC1652C72206306800097AB9 /* RxCocoa.framework */,
+				FC1652C52206306800097AB9 /* RxSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +162,7 @@
 				FC16528B22062EE700097AB9 /* Sources */,
 				FC16528C22062EE700097AB9 /* Frameworks */,
 				FC16528D22062EE700097AB9 /* Resources */,
+				FC1652C022062EFC00097AB9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -229,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC1652C22206304B00097AB9 /* .swiftlint.yml in Resources */,
 				FC16529D22062EE800097AB9 /* LaunchScreen.storyboard in Resources */,
 				FC16529A22062EE800097AB9 /* Assets.xcassets in Resources */,
 				FC16529822062EE700097AB9 /* Main.storyboard in Resources */,
@@ -250,6 +279,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FC1652C022062EFC00097AB9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxAtomic.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# SwiftLint\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n# Carthage\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FC16528B22062EE700097AB9 /* Sources */ = {
@@ -434,6 +487,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPWV8KDDJE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RxSwift_Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +509,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPWV8KDDJE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RxSwift_Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
