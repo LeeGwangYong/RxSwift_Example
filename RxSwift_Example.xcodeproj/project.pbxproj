@@ -17,6 +17,12 @@
 		FC1652C92206306900097AB9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C52206306800097AB9 /* RxSwift.framework */; };
 		FC1652CA2206306900097AB9 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C62206306800097AB9 /* RxBlocking.framework */; };
 		FC1652CB2206306900097AB9 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1652C72206306800097AB9 /* RxCocoa.framework */; };
+		FC328DE22208D25D00A01783 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DE12208D25D00A01783 /* EndPoint.swift */; };
+		FC328DE52208D86100A01783 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DE42208D86100A01783 /* HTTPTask.swift */; };
+		FC328DE72208D86F00A01783 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DE62208D86F00A01783 /* HTTPMethod.swift */; };
+		FC328DE92208D95B00A01783 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DE82208D95B00A01783 /* NetworkError.swift */; };
+		FC328DEB2208D96C00A01783 /* URLRequest + .swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DEA2208D96C00A01783 /* URLRequest + .swift */; };
+		FC328DED2208DCAE00A01783 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DEC2208DCAE00A01783 /* APIRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		FC1652C52206306800097AB9 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		FC1652C62206306800097AB9 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		FC1652C72206306800097AB9 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		FC328DE12208D25D00A01783 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		FC328DE42208D86100A01783 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		FC328DE62208D86F00A01783 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		FC328DE82208D95B00A01783 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		FC328DEA2208D96C00A01783 /* URLRequest + .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest + .swift"; sourceTree = "<group>"; };
+		FC328DEC2208DCAE00A01783 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,7 @@
 			children = (
 				FC16529222062EE700097AB9 /* AppDelegate.swift */,
 				FC16529E22062EE800097AB9 /* Info.plist */,
+				FC328DE32208D84F00A01783 /* Network */,
 				FC1652D02206582B00097AB9 /* Resource */,
 				FC1652CD220657EE00097AB9 /* Model */,
 				FC1652CE220657F400097AB9 /* View */,
@@ -129,6 +142,19 @@
 				FC16529922062EE800097AB9 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		FC328DE32208D84F00A01783 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FC328DE12208D25D00A01783 /* EndPoint.swift */,
+				FC328DE62208D86F00A01783 /* HTTPMethod.swift */,
+				FC328DE42208D86100A01783 /* HTTPTask.swift */,
+				FC328DEA2208D96C00A01783 /* URLRequest + .swift */,
+				FC328DE82208D95B00A01783 /* NetworkError.swift */,
+				FC328DEC2208DCAE00A01783 /* APIRouter.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC328DE52208D86100A01783 /* HTTPTask.swift in Sources */,
+				FC328DE22208D25D00A01783 /* EndPoint.swift in Sources */,
+				FC328DEB2208D96C00A01783 /* URLRequest + .swift in Sources */,
 				FC16529522062EE700097AB9 /* SignInViewController.swift in Sources */,
+				FC328DE92208D95B00A01783 /* NetworkError.swift in Sources */,
+				FC328DED2208DCAE00A01783 /* APIRouter.swift in Sources */,
+				FC328DE72208D86F00A01783 /* HTTPMethod.swift in Sources */,
 				FC16529322062EE700097AB9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
