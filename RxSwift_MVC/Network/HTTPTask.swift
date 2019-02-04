@@ -10,7 +10,7 @@ import Foundation
 
 typealias Parameters = [String: Any]
 enum HTTPTask {
-    case request(body: Parameters?, url: Parameters?, headers: HTTPHeaders?)
+    case request
     case download
     case upload
 }

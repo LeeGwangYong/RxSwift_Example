@@ -51,6 +51,11 @@ class SignInViewController: UIViewController {
             .map(validatePassword)
             .bind(to: passwordValidationSubject)
             .disposed(by: disposeBag)
+        
+        signInButton.rx.tap
+            .debounce(1.0, scheduler: MainScheduler.instance)
+            .subscribe(onNext: nil)
+            .disposed(by: disposeBag)
     }
     
     private func bindOutput() {
@@ -82,5 +87,9 @@ class SignInViewController: UIViewController {
 
     private func validatePassword(_ password: String) -> Bool {
         return 5 < password.count
+    }
+    
+    private func requestSignIn(email: String, password: String) {
+        
     }
 }

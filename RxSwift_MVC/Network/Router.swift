@@ -16,21 +16,11 @@ protocol RouterProtocol {
 
 class Router: RouterProtocol {
     func request(from route: EndPoint) throws -> URLRequest {
-        var urlRequest = URLRequest(url: route.baseURL.appendingPathComponent(route.path),
-                                    cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                                    timeoutInterval: 10.0)
-        urlRequest.httpMethod = route.httpMethod.rawValue
         do {
-            switch route.task {
-            case .request(let bodyParameters, let urlParameters, let headers):
-                try urlRequest.congifure(body: bodyParameters, url: urlParameters, headers: headers)
-            case .download, .upload:
-                throw NetworkError.unknown
-            }
+            return try route.urlRequest()
         } catch {
             throw error
         }
-        return urlRequest
     }
 }
 
