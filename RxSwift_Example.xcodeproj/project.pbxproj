@@ -22,7 +22,7 @@
 		FC328DE72208D86F00A01783 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DE62208D86F00A01783 /* HTTPMethod.swift */; };
 		FC328DE92208D95B00A01783 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DE82208D95B00A01783 /* NetworkError.swift */; };
 		FC328DEB2208D96C00A01783 /* URLRequest + .swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DEA2208D96C00A01783 /* URLRequest + .swift */; };
-		FC328DED2208DCAE00A01783 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DEC2208DCAE00A01783 /* APIRouter.swift */; };
+		FC328DED2208DCAE00A01783 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC328DEC2208DCAE00A01783 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 		FC328DE62208D86F00A01783 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		FC328DE82208D95B00A01783 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FC328DEA2208D96C00A01783 /* URLRequest + .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest + .swift"; sourceTree = "<group>"; };
-		FC328DEC2208DCAE00A01783 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		FC328DEC2208DCAE00A01783 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +152,7 @@
 				FC328DE42208D86100A01783 /* HTTPTask.swift */,
 				FC328DEA2208D96C00A01783 /* URLRequest + .swift */,
 				FC328DE82208D95B00A01783 /* NetworkError.swift */,
-				FC328DEC2208DCAE00A01783 /* APIRouter.swift */,
+				FC328DEC2208DCAE00A01783 /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 				FC328DEB2208D96C00A01783 /* URLRequest + .swift in Sources */,
 				FC16529522062EE700097AB9 /* SignInViewController.swift in Sources */,
 				FC328DE92208D95B00A01783 /* NetworkError.swift in Sources */,
-				FC328DED2208DCAE00A01783 /* APIRouter.swift in Sources */,
+				FC328DED2208DCAE00A01783 /* Router.swift in Sources */,
 				FC328DE72208D86F00A01783 /* HTTPMethod.swift in Sources */,
 				FC16529322062EE700097AB9 /* AppDelegate.swift in Sources */,
 			);
