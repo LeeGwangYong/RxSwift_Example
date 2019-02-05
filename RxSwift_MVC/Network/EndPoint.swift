@@ -6,6 +6,14 @@
 //  Copyright © 2019 GwangYongLee. All rights reserved.
 //
 
+//https://github.com/ReactiveX/RxSwift/blob/master/RxCocoa/Foundation/URLSession%2BRx.swift
+//https://medium.com/flawless-app-stories/writing-network-layer-in-swift-protocol-oriented-approach-4fa40ef1f908
+//https://reqres.in
+
+//HTTP Method와 Header에 대한 이해
+//https://gist.github.com/jays1204/703297eb0da1facdc454
+//https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/POST
+
 import Foundation
 
 typealias HTTPHeaders = [String: String]
@@ -15,7 +23,7 @@ protocol EndPoint {
     var parameters: Parameters? { get }
     var httpMethod: HTTPMethod { get }
     var task: HTTPTask { get }
-    var headrs: HTTPHeaders? { get }
+    var headers: HTTPHeaders? { get }
 }
 
 extension EndPoint {
@@ -25,8 +33,6 @@ extension EndPoint {
                                     timeoutInterval: 10.0)
         urlRequest.httpMethod = httpMethod.rawValue
         do {
-            // 각 HTTPMethod에 대한 HeaderField의 이해가 부족함.
-            // 추가적인 공부와 작업이 필요함.
             if let parameters = parameters {
                 switch httpMethod {
                 case .get:
@@ -42,7 +48,11 @@ extension EndPoint {
         } catch {
             throw NetworkError.encodingFailed
         }
-
+        
+        if let headers = headers {
+            headers.forEach{ urlRequest.setValue($0.value, forHTTPHeaderField: $0.key) }
+        }
+        
         return urlRequest
     }
 }

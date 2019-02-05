@@ -15,6 +15,8 @@ protocol RouterProtocol {
 }
 
 class Router: RouterProtocol {
+    static let shared = Router()
+    
     func request(from route: EndPoint) throws -> URLRequest {
         do {
             return try route.urlRequest()
