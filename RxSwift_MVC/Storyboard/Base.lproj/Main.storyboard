@@ -66,7 +66,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-NZ-WgH">
                                 <rect key="frame" x="37.5" y="222" width="300" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Sign In"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -52,10 +52,13 @@ class SignInViewController: UIViewController {
             .bind(to: passwordValidationSubject)
             .disposed(by: disposeBag)
         
-        signInButton.rx.tap
-            .debounce(1.0, scheduler: MainScheduler.instance)
-            .subscribe(onNext: nil)
+        let tapBackground = UITapGestureRecognizer()
+        tapBackground.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
             .disposed(by: disposeBag)
+        view.addGestureRecognizer(tapBackground)
     }
     
     private func bindOutput() {
@@ -75,8 +78,20 @@ class SignInViewController: UIViewController {
             .subscribe(onNext: { self.passwordValidationView.backgroundColor = $0 ? .green : .red })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(emailValidationSubject, passwordValidationSubject) { $0 && $1 }
+        let validations = Observable.combineLatest(emailValidationSubject, passwordValidationSubject) { $0 && $1 }
+        validations
             .subscribe(onNext: { self.signInButton.isEnabled = $0 })
+            .disposed(by: disposeBag)
+        
+        let texts = Observable.combineLatest(emailTextSubject, passwordTextSubject) { ($0, $1) }
+        
+        Observable.merge(signInButton.rx.tap.asObservable(), passwordTextField.rx.controlEvent(.editingDidEndOnExit).asObservable())
+            .withLatestFrom(validations)
+            .filter{ $0 }
+            .withLatestFrom(texts)
+            .flatMapLatest{ self.requestSignIn(email: $0, password: $1) }
+            .subscribe(onNext: { print($0) },
+                       onError: { print($0) })
             .disposed(by: disposeBag)
     }
     
@@ -89,7 +104,9 @@ class SignInViewController: UIViewController {
         return 5 < password.count
     }
     
-    private func requestSignIn(email: String, password: String) {
-        
+    func requestSignIn(email: String, password: String) -> Observable<[String: String]> {
+        return URLSession.shared.rx.json(from: SignAPI.in(email: email, password: password))
+            .observeOn(CurrentThreadScheduler.instance)
+            .map{ $0 as? [String: String] ?? [:] }
     }
 }
