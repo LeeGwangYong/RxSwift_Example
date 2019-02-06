@@ -12,7 +12,7 @@ enum SignAPI: EndPoint {
     // swiftlint:disable identifier_name
     case `in`(email: String, password: String)
     var baseURL: URL {
-        guard let url = URL(string: "https://reqres.in/api/") else {
+        guard let url = URL(string: "https://reqres.in/api") else {
             fatalError()
         }
         return url
@@ -21,7 +21,7 @@ enum SignAPI: EndPoint {
     var path: String {
         switch self {
         case .in:
-            return "/api/login"
+            return "/login"
         }
     }
     

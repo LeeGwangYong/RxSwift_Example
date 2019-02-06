@@ -11,24 +11,43 @@ import RxSwift
 
 typealias RouterCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 protocol RouterProtocol {
-    func request(from route: EndPoint) throws -> URLRequest
+    func request(from endPoint: EndPoint) throws -> URLRequest
 }
 
 class Router: RouterProtocol {
     static let shared = Router()
-    
-    func request(from route: EndPoint) throws -> URLRequest {
+    func request(from endPoint: EndPoint) throws -> URLRequest {
         do {
-            return try route.urlRequest()
+            return try endPoint.urlRequest()
         } catch {
             throw error
         }
     }
 }
 
-extension Reactive where Base: Router {
-    func response(about request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)> {
+extension Router: ReactiveCompatible {}
+
+extension URLSession {
+    func request(from endPoint: EndPoint) throws -> URLRequest {
+        do {
+            return try endPoint.urlRequest()
+        } catch let error {
+            throw error
+        }
+    }
+}
+
+extension Reactive where Base: URLSession {
+    func response(from endPoint: EndPoint) -> Observable<(response: HTTPURLResponse, data: Data)> {
         return Observable.create { observer in
+            
+            var request: URLRequest!
+            do {
+                request = try self.base.request(from: endPoint)
+            } catch let error {
+                observer.on(.error(error))
+            }
+            
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let response = response, let data = data else {
                     observer.on(.error(error ?? NetworkError.unknown))
@@ -52,8 +71,8 @@ extension Reactive where Base: Router {
         }
     }
     
-    func data(about request: URLRequest) -> Observable<Data> {
-        return self.response(about: request).map{
+    func data(from endPoint: EndPoint) -> Observable<Data> {
+        return self.response(from: endPoint).map{
             switch $0.response.statusCode {
             case 200..<300:
                 return $0.data
@@ -63,8 +82,8 @@ extension Reactive where Base: Router {
         }
     }
     
-    func json(about request: URLRequest, options: JSONSerialization.ReadingOptions = []) -> Observable<Any> {
-        return self.data(about: request).map {
+    func json(from endPoint: EndPoint, options: JSONSerialization.ReadingOptions = []) -> Observable<Any> {
+        return self.data(from: endPoint).map {
             do {
                 return try JSONSerialization.jsonObject(with: $0, options: options)
             } catch let error {
