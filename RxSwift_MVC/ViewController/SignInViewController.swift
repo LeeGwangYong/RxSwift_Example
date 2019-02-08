@@ -16,11 +16,13 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordValidationView: UIView!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     let emailTextSubject = BehaviorSubject(value: "")
     let passwordTextSubject = BehaviorSubject(value: "")
     let emailValidationSubject = BehaviorSubject(value: false)
     let passwordValidationSubject = BehaviorSubject(value: false)
+    let signingIn = ActivityIndicator()
     
     var disposeBag = DisposeBag()
     
@@ -52,6 +54,10 @@ class SignInViewController: UIViewController {
             .bind(to: passwordValidationSubject)
             .disposed(by: disposeBag)
         
+        emailTextField.rx.controlEvent(.editingDidEndOnExit).asDriver()
+            .drive(onNext: { self.passwordTextField.becomeFirstResponder() })
+            .disposed(by: disposeBag)
+        
         let tapBackground = UITapGestureRecognizer()
         tapBackground.rx.event
             .subscribe(onNext: { [weak self] _ in
@@ -59,6 +65,12 @@ class SignInViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         view.addGestureRecognizer(tapBackground)
+        
+        activityIndicatorView.hidesWhenStopped = true
+        
+        signingIn.asDriver()
+            .drive(onNext: { self.activityIndicatorView.rx.animate($0) })
+            .disposed(by: disposeBag)
     }
     
     private func bindOutput() {
@@ -89,7 +101,9 @@ class SignInViewController: UIViewController {
             .withLatestFrom(validations)
             .filter{ $0 }
             .withLatestFrom(texts)
-            .flatMapLatest{ self.requestSignIn(email: $0, password: $1) }
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .flatMapLatest{ self.requestSignIn(email: $0, password: $1).trackActivity(self.signingIn) }
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { print($0) },
                        onError: { print($0) })
             .disposed(by: disposeBag)
@@ -104,9 +118,20 @@ class SignInViewController: UIViewController {
         return 5 < password.count
     }
     
-    func requestSignIn(email: String, password: String) -> Observable<[String: String]> {
+    private func requestSignIn(email: String, password: String) -> Observable<[String: String]> {
+        let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .background)
         return URLSession.shared.rx.json(from: SignAPI.in(email: email, password: password))
-            .observeOn(CurrentThreadScheduler.instance)
+            .observeOn(backgroundScheduler)
             .map{ $0 as? [String: String] ?? [:] }
+    }
+}
+
+extension Reactive where Base: UIActivityIndicatorView {
+    func animate(_ value: Bool) {
+        if value {
+            base.startAnimating()
+        } else {
+            base.stopAnimating()
+        }
     }
 }

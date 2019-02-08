@@ -65,30 +65,60 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-NZ-WgH">
-                                <rect key="frame" x="37.5" y="222" width="300" height="30"/>
+                                <rect key="frame" x="164" y="222" width="47" height="30"/>
                                 <state key="normal" title="Sign In"/>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Lzn-fy-CXb">
+                                <rect key="frame" x="134" y="227" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hx3-C0-epV">
+                                <rect key="frame" x="87.5" y="312" width="200" height="107"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96y-Nj-UBE">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="107"/>
+                                        <color key="backgroundColor" red="0.2051192224" green="0.47214853759999997" blue="0.96560257670000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="96y-Nj-UBE" firstAttribute="centerY" secondItem="hx3-C0-epV" secondAttribute="centerY" id="9ZJ-MG-6yi"/>
+                                    <constraint firstItem="96y-Nj-UBE" firstAttribute="centerX" secondItem="hx3-C0-epV" secondAttribute="centerX" id="DbG-fz-ubU"/>
+                                    <constraint firstItem="96y-Nj-UBE" firstAttribute="width" secondItem="hx3-C0-epV" secondAttribute="width" id="V0Z-M2-RTQ"/>
+                                    <constraint firstAttribute="width" secondItem="96y-Nj-UBE" secondAttribute="height" multiplier="15:8" id="jMY-aY-0DT"/>
+                                    <constraint firstAttribute="width" constant="200" id="oRC-9E-9EL"/>
+                                    <constraint firstItem="96y-Nj-UBE" firstAttribute="height" secondItem="hx3-C0-epV" secondAttribute="height" id="rYy-Si-9cC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0Ec-gP-eDi" firstAttribute="centerX" secondItem="B8D-ey-EUn" secondAttribute="centerX" id="5m3-sm-9XP"/>
+                            <constraint firstItem="hx3-C0-epV" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="7Cn-MF-roZ"/>
                             <constraint firstItem="B8D-ey-EUn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="A1M-nN-tB9"/>
                             <constraint firstItem="B8D-ey-EUn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ACU-f0-oHj"/>
-                            <constraint firstItem="aPi-NZ-WgH" firstAttribute="width" secondItem="0Ec-gP-eDi" secondAttribute="width" id="Nic-8d-iGY"/>
+                            <constraint firstItem="Lzn-fy-CXb" firstAttribute="centerY" secondItem="aPi-NZ-WgH" secondAttribute="centerY" id="GId-js-QhD"/>
                             <constraint firstItem="aPi-NZ-WgH" firstAttribute="centerX" secondItem="0Ec-gP-eDi" secondAttribute="centerX" id="Rcj-vj-HgA"/>
                             <constraint firstItem="0Ec-gP-eDi" firstAttribute="top" secondItem="B8D-ey-EUn" secondAttribute="bottom" constant="20" id="Ul1-ji-uc3"/>
                             <constraint firstItem="0Ec-gP-eDi" firstAttribute="width" secondItem="B8D-ey-EUn" secondAttribute="width" id="bGw-dV-SAz"/>
                             <constraint firstItem="aPi-NZ-WgH" firstAttribute="top" secondItem="0Ec-gP-eDi" secondAttribute="bottom" constant="18" id="dA2-Nu-nMc"/>
                             <constraint firstItem="B8D-ey-EUn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eXu-r0-OqE"/>
+                            <constraint firstItem="hx3-C0-epV" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="liu-Me-tKd"/>
                             <constraint firstItem="0cM-9S-Xgy" firstAttribute="centerY" secondItem="0Ec-gP-eDi" secondAttribute="centerY" id="nRg-s4-uyz"/>
                             <constraint firstItem="fnF-Gy-3vR" firstAttribute="centerY" secondItem="B8D-ey-EUn" secondAttribute="centerY" id="ncC-1s-Q3T"/>
                             <constraint firstItem="0cM-9S-Xgy" firstAttribute="trailing" secondItem="0Ec-gP-eDi" secondAttribute="trailing" constant="-10" id="oQo-Kc-n1y"/>
                             <constraint firstItem="fnF-Gy-3vR" firstAttribute="trailing" secondItem="B8D-ey-EUn" secondAttribute="trailing" constant="-10" id="rLl-3H-a7l"/>
+                            <constraint firstItem="aPi-NZ-WgH" firstAttribute="leading" secondItem="Lzn-fy-CXb" secondAttribute="trailing" constant="10" id="w9Z-oC-FGy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="iQ7-PE-ttc"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Lzn-fy-CXb" id="Fk5-MV-CeD"/>
                         <outlet property="emailTextField" destination="B8D-ey-EUn" id="w9a-BC-XZ3"/>
                         <outlet property="emailValidationView" destination="fnF-Gy-3vR" id="YB2-V4-hk1"/>
                         <outlet property="passwordTextField" destination="0Ec-gP-eDi" id="62j-uy-tlj"/>
